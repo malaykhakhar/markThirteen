@@ -126,12 +126,34 @@ function getNextPalindromeDate(date) {
 }
 
 
-var date = {
-  day: 31,
-  month: 12,
-  year: 2000
+
+var inputDate = document.querySelector(".input");
+var checkButton = document.querySelector("#check-btn");
+var output = document.querySelector(".output");
+
+function clickHandler(e) {
+  var bdayStr = inputDate.value;
+
+  if (bdayStr !== '') {
+    var listOfDate = bdayStr.split('-');
+    var date = {
+      day: Number(listOfDate[2]),
+      month: Number(listOfDate[1]),
+      year: Number(listOfDate[0])
+    };
+
+    var tempDate = numToString(date);
+    var isPalindrome = checkForAllDates(tempDate);
+
+    if (isPalindrome) {
+      output.innerText = "Your birthday is palindrome";
+    } else {
+      var [counter, nextDate] = getNextPalindromeDate(date);
+      output.innerText = `The next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}. You missed it by ${counter} days.`
+    }
+
+    console.log(isPalindrome);
+  }
 }
 
-var dateStr = numToString(date);
-
-console.log(getNextPalindromeDate(date));
+checkButton.addEventListener("click", clickHandler);
