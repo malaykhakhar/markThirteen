@@ -151,8 +151,8 @@ function clickHandler(e) {
       var [counter, nextDate] = getNextPalindromeDate(date);
       output.innerText = `The next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}. You missed it by ${counter} days.`
     }
-
-    console.log(isPalindrome);
+  } else {
+    output.innerText = `Please enter the input.`
   }
 }
 

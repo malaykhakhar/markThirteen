@@ -13,6 +13,9 @@
 
 body {
   font-family: "Dosis", sans-serif;
+  /* background: linear-gradient(to right, #74ebd5, #acb6e5); */
+  /* background: linear-gradient(to right, #b2fefa, #0ed2f7); */
+  background: linear-gradient(to right, #acb6e5, #86fde8);
 }
 
 .container {
@@ -65,6 +68,23 @@ body {
   font-weight: bold;
   max-width: 600px;
   margin: 2rem auto;
+}
+
+.privacy {
+  background-color: white;
+  border: 2px solid rgb(24, 24, 24);
+  color: black;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin: 1.5rem auto 0;
+  max-width: 90%;
+  width: 450px;
+}
+
+.notice {
+  color: red;
+  font-weight: bold;
 }
 
 footer {
