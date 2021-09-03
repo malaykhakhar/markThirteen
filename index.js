@@ -125,11 +125,65 @@ function getNextPalindromeDate(date) {
   return [counter, nextDate];
 }
 
+function getPreviousDate(date) {
+  var day = date.day - 1;
+  var month = date.month;
+  var year = date.year;
+
+  var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  if (day === 0) {
+    month--;
+    if (month === 0) {
+      month = 12;
+      day = 31;
+      year--;
+    } else if (month === 2) {
+      if (isLeapYear(year)) {
+        day = 29;
+      } else {
+        day = 28;
+      }
+    } else {
+      day = daysInMonth[month - 1];
+    }
+  }
+
+  return {
+    day: day,
+    month: month,
+    year: year
+  }
+}
+
+
+function getPreviousPalindromeDate(date) {
+
+  var previousDate = getPreviousDate(date);
+  var counter = 0;
+
+  while (1) {
+    counter++;
+    var dateStr = numToString(previousDate);
+    var isPalindrome = checkForAllDates(dateStr);
+
+    if (isPalindrome) {
+      break;
+    }
+    previousDate = getPreviousDate(previousDate);
+  }
+  return [counter, previousDate];
+}
+
 
 
 var inputDate = document.querySelector(".input");
 var checkButton = document.querySelector("#check-btn");
 var output = document.querySelector(".output");
+
+function checkDays(num) {
+  return (num > 1 ? 'days' : 'day');
+}
 
 function clickHandler(e) {
   var bdayStr = inputDate.value;
@@ -148,8 +202,14 @@ function clickHandler(e) {
     if (isPalindrome) {
       output.innerText = "Your birthday is palindrome";
     } else {
-      var [counter, nextDate] = getNextPalindromeDate(date);
-      output.innerText = `The next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}. You missed it by ${counter} days.`
+      var [nextCounter, nextDate] = getNextPalindromeDate(date);
+      var [previousCounter, previousDate] = getPreviousPalindromeDate(date);
+
+      if (nextCounter < previousCounter) {
+        output.innerText = `The next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}. You missed it by ${nextCounter} ${checkDays(nextCounter)}.`
+      } else {
+        output.innerText = `The previous palindrome date was ${previousDate.day}-${previousDate.month}-${previousDate.year}. You missed it by ${previousCounter} ${checkDays(previousCounter)}.`
+      }
     }
   } else {
     output.innerText = `Please enter the input.`
