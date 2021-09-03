@@ -15,15 +15,16 @@ body {
   font-family: "Dosis", sans-serif;
   background: linear-gradient(to right, #acb6e5, #86fde8);
   /* background-image: url("https://wallpapercave.com/wp/wp2504235.jpg"); */
-  background-image: url("http://cdn.shopify.com/s/files/1/0257/6718/2416/articles/2e8a8137d2c9647e6481b718e560c8d2.png?v=1608979826");
+  /* background-image: url("http://cdn.shopify.com/s/files/1/0257/6718/2416/articles/2e8a8137d2c9647e6481b718e560c8d2.png?v=1608979826"); */
+  background-image: url("/images/bg1.jpg");
   background-size: 100vw;
 }
 
 .container {
-  margin: 6rem auto 3.5rem;
+  margin: 4rem auto 6rem;
   padding: 2rem;
   text-align: center;
-  background: rgba(229, 231, 235, 0.7);
+  background: rgba(229, 231, 235, 0.8);
   border: 2px solid #1e3a8a;
   max-width: 50%;
 }
@@ -94,14 +95,15 @@ body {
 }
 
 footer {
+  background-color: #dbeafe;
   color: var(--primary-color);
   font-size: larger;
   font-weight: bolder;
   text-align: center;
-  /* position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
-  right: 0; */
+  right: 0;
 }
 
 img,
